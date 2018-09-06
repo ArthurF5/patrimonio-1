@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'Sistema de Patrimônio',
 
-    'title_prefix' => '',
+    'title_prefix' => 'IFBA - Juazeiro :: ',
 
     'title_postfix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>IFBA</b> - Juazeiro',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => 'IFBA',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'blue',
+    'skin' => 'green',
 
     /*
     |--------------------------------------------------------------------------
@@ -107,7 +107,7 @@ return [
     |
     */
 
-    'menu' => [
+    /*'menu' => [
         'MAIN NAVIGATION',
         [
             'text' => 'Blog',
@@ -183,6 +183,17 @@ return [
             'text'       => 'Information',
             'icon_color' => 'aqua',
         ],
+    ],*/
+
+    'menu'  =>  [
+
+        'MENU DE NAVEGAÇÃO',
+        [
+            'text'  => 'Setores',
+            'route' => 'setores.index',
+            'icon'  => 'building',
+        ],
+
     ],
 
     /*
