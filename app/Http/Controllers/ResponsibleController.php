@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sector;
+use App\Models\Responsible;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class SectorController extends Controller
+class ResponsibleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,20 +16,12 @@ class SectorController extends Controller
      */
     public function index()
     {
-        $sectors = Sector::all();
-        return view('system.sectors.index', compact('sectors'));
+        $users = Responsible::all();
+        $roles = Role::all();
+        return view('system.responsible.index', compact('roles', 'users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+  
     /**
      * Store a newly created resource in storage.
      *
@@ -38,20 +31,19 @@ class SectorController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'name' => 'required|unique:sectors|max:255',
+            'name' => 'required|unique:responsibles|max:255',
+            'role' => 'required|max:255',
+            'siape' => 'numeric|nullable',
         ]);
 
-        $sector = Sector::create($request->all());
+        $user = Responsible::create($request->all());
 
-        if ($sector) {
-            
+        if ($user) {
             Session::flash('status', 'success');
-            Session::flash('message', 'Setor '. $request->name .' criado com sucesso');
+            Session::flash('message', 'Usuário '. $request->name .' criado com sucesso');
 
-            return redirect()->route('sectors.index');
-            
+            return redirect()->route('responsibles.index');            
         }
-
     }
 
     /**

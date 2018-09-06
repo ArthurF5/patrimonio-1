@@ -18,4 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/setores', 'SectorController', ['only' => ['index', 'store', 'update', 'delete']]);
+Route::resource('/sectors', 'SectorController', ['only' => ['index', 'store', 'update', 'delete']]);
+Route::resource('/responsibles', 'ResponsibleController', ['only' => ['index', 'store', 'update', 'delete']]);
+Route::resource('/roles', 'RoleController', ['only' => ['index', 'store', 'update', 'delete']]);
