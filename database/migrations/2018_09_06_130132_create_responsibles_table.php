@@ -16,7 +16,6 @@ class CreateResponsiblesTable extends Migration
         Schema::create('responsibles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('role');
             $table->string('siape')->nullable();
             $table->timestamps();
         });

@@ -8,7 +8,12 @@ class Responsible extends Model
 {
     protected $fillable = [
     	'name',
-    	'role',
     	'siape',
+    	'role_id',
     ];
+
+    public function role()
+    {
+    	return $this->belongsTo('App\Role');
+    }
 }

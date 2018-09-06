@@ -32,7 +32,7 @@ class ResponsibleController extends Controller
     {
         $validate = $request->validate([
             'name' => 'required|unique:responsibles|max:255',
-            'role' => 'required|max:255',
+            'role_id' => 'required|numeric',
             'siape' => 'numeric|nullable',
         ]);
 

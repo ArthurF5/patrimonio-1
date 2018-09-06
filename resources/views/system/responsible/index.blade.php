@@ -49,9 +49,9 @@
 						<input type="text" name="name" class="form-control" id="responsible-name" autofocus value="{{ old('name') }}">
 					</div>
 
-					<div class="form-group col-lg-4 {{ $errors->has('role') ? 'has-error' : '' }}">
+					<div class="form-group col-lg-4 {{ $errors->has('role_id') ? 'has-error' : '' }}">
 						<label for="responsible-role">Cargo:</label>
-						<select name="role" id="responsible-role" class="form-control">
+						<select name="role_id" id="responsible-role" class="form-control">
 							<option selected disabled>Selecione o cargo</option>
 							@foreach($roles as $role)
 								<option value="{{ $role->id }}">{{ $role->name }}</option>
