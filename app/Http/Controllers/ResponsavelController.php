@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Responsible;
-use App\Models\Role;
+use App\Models\Responsavel;
+use App\Models\Cargo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class ResponsibleController extends Controller
+class ResponsavelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class ResponsibleController extends Controller
      */
     public function index()
     {
-        $users = Responsible::all();
-        $roles = Role::all();
-        return view('system.responsible.index', compact('roles', 'users'));
+        $usuarios = Responsavel::all();
+        $cargos = Cargo::all();
+        return view('sistema.responsaveis.index', compact('cargos', 'usuarios'));
     }
 
   
@@ -31,18 +31,18 @@ class ResponsibleController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'name' => 'required|unique:responsibles|max:255',
-            'role_id' => 'required|numeric',
+            'nome' => 'required|unique:responsaveis|max:255',
+            'cargo_id' => 'required|numeric',
             'siape' => 'numeric|nullable',
         ]);
 
-        $user = Responsible::create($request->all());
+        $usuario = Responsavel::create($request->all());
 
-        if ($user) {
+        if ($usuario) {
             Session::flash('status', 'success');
             Session::flash('message', 'Usuário '. $request->name .' criado com sucesso');
 
-            return redirect()->route('responsibles.index');            
+            return redirect()->route('responsaveis.index');            
         }
     }
 

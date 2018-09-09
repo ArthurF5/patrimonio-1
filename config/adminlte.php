@@ -190,19 +190,19 @@ return [
         'MENU DE NAVEGAÇÃO',
         [
             'text'  => 'Setores',
-            'route' => 'sectors.index',
+            'route' => 'setores.index',
             'icon'  => 'building',
         ],
         [
             'text'  => 'Cargos',
-            'icon'  => 'user',
-            'route' => 'roles.index',
+            'icon'  => 'briefcase',
+            'route' => 'cargos.index',
 
         ],
         [
             'text'  => 'Servidores',
-            'icon'  => 'user',
-            'route' => 'responsibles.index',
+            'icon'  => 'users',
+            'route' => 'responsaveis.index',
         ],
 
 

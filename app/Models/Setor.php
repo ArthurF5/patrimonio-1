@@ -4,14 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Setor extends Model
 {
+	protected $table = 'setores';
+
     protected $fillable =[
-    	'name',
-    	'description',
+    	'nome',
+    	'descricao',
     ];
 
-    public function getNameAttribute($value) 
+    public function getNomeAttribute($value) 
     {
     	return mb_strtoupper($value);
     }

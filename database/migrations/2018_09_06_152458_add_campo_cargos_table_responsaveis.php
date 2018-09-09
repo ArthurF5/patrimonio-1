@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRoleFieldTableResponsibles extends Migration
+class AddCampoCargosTableResponsaveis extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddRoleFieldTableResponsibles extends Migration
      */
     public function up()
     {
-        Schema::table('responsibles', function (Blueprint $table) {
-            $table->integer('role_id')->unsigned();
-            $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade');
+        Schema::table('responsaveis', function (Blueprint $table) {
+            $table->integer('cargo_id')->unsigned();
+            $table->foreign('cargo_id')->references('id')->on('cargos')->onUpdate('cascade');
 
         });
     }
@@ -27,8 +27,8 @@ class AddRoleFieldTableResponsibles extends Migration
      */
     public function down()
     {
-        Schema::table('responsibles', function (Blueprint $table) {
-            $table->dropColumn('role_id');
+        Schema::table('responsaveis', function (Blueprint $table) {
+            $table->dropColumn('cargo_id');
         });
     }
 }

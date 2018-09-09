@@ -2,8 +2,8 @@
 
 
 @section('content_header')
-    <h1>
-    	Setores <small>Visão Geral</small>
+	<h1>
+    	Cargos <small>Visão Geral</small>
     </h1>
 
 
@@ -12,12 +12,10 @@
     		<i class="fa fa-home"></i>
     		<a href="{{ route('home') }}">Home</a>
     	</li>
-    	<li>
-    		<i class="fa fa-building"></i> Setores
+    	<li class="active">
+    		<i class="fa fa-briefcase"></i> Cargos
     	</li>
-
     </ol>
-
 @stop
 
 @section('content')
@@ -35,16 +33,19 @@
 		@endcomponent
 	@endif
 
-	@component('components.create')
-		@slot('header') Cadastrar Cargo @endslot
-		@slot('route') {{ route('roles.store') }} @endslot
-	@endcomponent
+	<div class="row">
+		
+		@component('components.create')
+			@slot('header', 'Cadastrar Cargo')
+			@slot('route', route('cargos.store')) 
+		@endcomponent
 
-	@component('components.table')
-		@slot('header', ' Lista de Cargos')
-		@slot('titles', ['Nome', 'Descrição', 'Ações'])
-		@slot('items', $roles)
-	@endcomponent
+		@component('components.table')
+			@slot('cabecalho', ' Lista de Cargos')
+			@slot('titulos', ['Nome', 'Descrição', 'Ações'])
+			@slot('items', $cargos)
+		@endcomponent
+	</div>
 	
 
 @stop

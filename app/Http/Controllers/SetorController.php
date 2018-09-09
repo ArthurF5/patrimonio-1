@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
+use App\Models\Setor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class RoleController extends Controller
+class SetorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,12 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
-        return view('system.roles.index', compact('roles'));
+        $setores = Setor::all();
+
+        return view('sistema.setores.index', compact('setores'));
     }
 
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -29,17 +30,20 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'name' => 'required|unique:roles|max:255',
+            'nome' => 'required|unique:setores|max:255',
         ]);
 
-        $role = Role::create($request->all());
+        $setor = Setor::create($request->all());
 
-        if ($role) {
+        if ($setor) {
+            
             Session::flash('status', 'success');
-            Session::flash('message', 'Cargo cadastrado com sucesso');
+            Session::flash('message', 'Setor '. $request->name .' criado com sucesso');
 
-            return redirect()->route('roles.index');
+            return redirect()->route('setores.index');
+            
         }
+
     }
 
     /**
