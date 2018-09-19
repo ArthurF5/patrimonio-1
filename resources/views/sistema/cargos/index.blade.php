@@ -34,7 +34,7 @@
 		<div class="col-lg-4 col-md-5">
 			<div class="box box-solid box-success">
 				<div class="box-header">
-					<h1 class="page-header">
+					<h1 class="box-title">
 						<i class="fa fa-plus"></i> Cadastrar Cargo
 					</h1>
 				</div>
@@ -60,7 +60,7 @@
 						
 						<div class="form-group text-right">
 							<button type="submit" class="btn btn-primary">
-								<i class="fa fa-save"></i> Cadastrar
+								Cadastrar
 							</button>
 						</div>
 
@@ -72,7 +72,7 @@
 		<div class="col-lg-8 col-md-7">
 				<div class="box box-success box-solid">
 					<div class="box-header ">
-						<h1 class="page-header">
+						<h1 class="box-title">
 							<i class="fa fa-list"></i> Lista de Cargos
 						</h1>
 					</div>

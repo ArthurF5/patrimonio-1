@@ -13,22 +13,32 @@
 
                     <div class="form-group">
                         <label for="editar-nome">Nome: </label>
-                        <input type="text" id="editar-nome" name="nome" value="{{ old('nome', $item->nome) }}" class="form-control">
+                        <input type="text" id="editar-nome" name="nome" value="{{ $item->nome }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="editar-cargo" class="form-control-label">Cargo: </label>
-                        <select class="form-control" name="cargo_id">
+                        <select class="form-control" id="editar-cargo" name="cargo_id">
                             @foreach($cargos as $cargo)
                                 <option value="{{ $cargo->id }}" {{ $item->cargo->id == $cargo->id ? 'selected' : ''}}>{{ $cargo->nome }}</option>
                             @endforeach
+                        </select>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="editar-setor" class="form-control-label">Setor: </label>
+                        <select class="form-control" id="editar-setor" name="setor_id">
+                            @foreach($setores as $setor)
+                            <option value="{{ $setor->id }} {{ $item->id == $setor->id ?'selected' : '' }}">{{ $setor->nome }}</option>
+
+                            @endforeach
+                            
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="edit-siape">Siape: </label>
-                        <input type="text" name="siape" id="edit-siape" value="{{ old('siape', $item->siape) }}" class="form-control">
+                        <input type="text" name="siape" id="edit-siape" value="{{ $item->siape }}" class="form-control">
                     </div>
                 </form>
                 

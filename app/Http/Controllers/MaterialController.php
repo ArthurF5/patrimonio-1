@@ -23,7 +23,7 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        //
+        return view('sistema.materiais.index');
     }
 
     /**

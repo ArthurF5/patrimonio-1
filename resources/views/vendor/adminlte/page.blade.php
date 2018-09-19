@@ -126,8 +126,12 @@
         </div>
         <!-- /.content-wrapper -->
 
+        <footer class="main-footer">
+            @yield('footer')
+        </footer>
     </div>
     <!-- ./wrapper -->
+        
 @stop
 
 @section('adminlte_js')

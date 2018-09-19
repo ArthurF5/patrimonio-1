@@ -32,7 +32,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
                 <button type="submit" class="btn btn-primary pull-right" form="edit-form-{{ $item->id }}">
-                    <i class="fa fa-save"></i> Salvar mudanças
+                    Salvar mudanças
                 </button>
             </div>
 

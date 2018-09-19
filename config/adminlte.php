@@ -189,6 +189,11 @@ return [
 
         'MENU DE NAVEGAÇÃO',
         [
+            'text'  => 'Página Inicial',
+            'icon'  => 'home',
+            'route' => 'home',
+        ],
+        [
             'text'  => 'Setores',
             'route' => 'setores.index',
             'icon'  => 'building',
@@ -203,6 +208,12 @@ return [
             'text'  => 'Servidores',
             'icon'  => 'users',
             'route' => 'responsaveis.index',
+        ],
+        [
+            'text'  => 'Materiais',
+            'icon'  => 'cube',
+            'route' => 'materiais.index',
+
         ],
 
 

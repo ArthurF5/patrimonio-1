@@ -13,13 +13,13 @@ class CreateMateriaisTable extends Migration
      */
     public function up()
     {
-        // Schema::table('materiais', function (Blueprint $table) {
-        //     $table->increments('id');
-        //     $table->string('nome');
-        //     // $table->string('tombamento');
-        //     // $table->string('descricao')->nullable();
-        //     $table->timestamps();
-        // });
+        Schema::table('materiais', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nome');
+            $table->string('tombamento');
+            $table->string('descricao')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**

@@ -12,11 +12,17 @@ class Responsavel extends Model
     	'nome',
     	'siape',
     	'cargo_id',
+        'setor_id',
     ];
 
     public function cargo()
     {
         return $this->belongsTo('App\Models\Cargo', 'cargo_id');
+    }
+
+    public function setor()
+    {
+        return $this->belongsTo('App\Models\Setor', 'setor_id');
     }
 
     public function setNomeAttribute($value) 

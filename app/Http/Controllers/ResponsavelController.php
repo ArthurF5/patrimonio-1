@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Responsavel;
-use App\Models\Cargo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+
+use App\Models\Cargo;
+use App\Models\Setor;
+use App\Models\Responsavel;
 
 class ResponsavelController extends Controller
 {
@@ -30,7 +32,9 @@ class ResponsavelController extends Controller
     {
         $usuarios = Responsavel::orderBy('nome', 'asc')->get();
         $cargos = Cargo::orderBy('nome', 'asc')->get();
-        return view('sistema.responsaveis.index', compact('cargos', 'usuarios'));
+        $setores = Setor::orderBy('nome', 'asc')->get();
+
+        return view('sistema.responsaveis.index', compact('cargos', 'usuarios', 'setores'));
     }
 
   
@@ -42,19 +46,15 @@ class ResponsavelController extends Controller
      */
     public function store(Request $request)
     {
+
         $validate = $request->validate([
             'nome' => 'required|unique:responsaveis|max:255',
             'cargo_id' => 'required|numeric',
+            'setor_id' => 'required|numeric',
             'siape' => 'numeric|nullable',
         ]);
 
-        $usuario = Responsavel::create($request->all());
-
-        if ($usuario) {
-            Session::flash('status', 'info');
-            Session::flash('message', 'Usuário criado.');
-        }
-
+        Responsavel::create($request->all());
         return redirect()->back();
     }
 
@@ -67,11 +67,7 @@ class ResponsavelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(Responsavel::find($id)->update($request->all())) {
-            Session::flash('status', 'info');
-            Session::flash('message', 'Usuário atualizado.');
-        }
-
+        Responsavel::find($id)->update($request->all());
         return redirect()->back();
     }
 
@@ -83,11 +79,8 @@ class ResponsavelController extends Controller
      */
     public function destroy($id)
     {
-        if(Responsavel::destroy($id)) {
-            Session::flash('status', 'danger');
-            Session::flash('message', 'Usuário excluido.');
-        }
-
+        
+        Responsavel::destroy($id);
         return redirect()->back();
     }
 }
