@@ -13,8 +13,8 @@ class Setor extends Model
     	'descricao',
     ];
 
-    public function getNomeAttribute($value) 
+    public function setNomeAttribute($value) 
     {
-    	return mb_strtoupper($value);
+    	$this->attributes['nome'] = mb_strtoupper($value);
     }
 }

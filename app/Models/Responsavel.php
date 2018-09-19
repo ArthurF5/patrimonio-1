@@ -16,6 +16,11 @@ class Responsavel extends Model
 
     public function cargo()
     {
-    	return $this->belongsTo('App\Models\Cargo', 'cargo_id');
+        return $this->belongsTo('App\Models\Cargo', 'cargo_id');
+    }
+
+    public function setNomeAttribute($value) 
+    {
+        $this->attributes['nome'] = mb_strtoupper($value);
     }
 }

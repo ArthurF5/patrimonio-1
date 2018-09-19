@@ -3,3 +3,7 @@ table {
 	border-radius: 10px;
 	padding: 10px 10px 10px 10px;
 }
+
+.has-error .select2-selection {
+    border-color: #f56954 !important;
+}

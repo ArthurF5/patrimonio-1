@@ -13,8 +13,17 @@ class Cargo extends Model
     	'descricao',
     ];
 
-    public function getNomeAttribute($value) 
+    public function responsaveis()
     {
-    	return mb_strtoupper($value);
+        return $this->hasMany('App\Models\Responsavel');
+    }
+
+    public function setNomeAttribute($value) 
+    {
+        $this->attributes['nome'] = mb_strtoupper($value);
+    }
+
+    public static function getOrderedCargos() {
+    	return self::orderBy('nome', 'asc')->get();
     }
 }

@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Setor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
-class SetorController extends Controller
+class MaterialController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,11 +23,18 @@ class SetorController extends Controller
      */
     public function index()
     {
-        $setores = Setor::all();
-
-        return view('sistema.setores.index', compact('setores'));
+        //
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -39,22 +44,29 @@ class SetorController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'nome' => 'required|unique:setores|max:255',
-        ]);
+        //
+    }
 
-        $setor = Setor::create($request->all());
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
 
-        if ($setor) {
-            
-            Session::flash('status', 'success');
-            Session::flash('message', 'Setor '. $request->name .' criado com sucesso');
-
-            return redirect()->back();
-        }
-
-        return redirect()->back();
-
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -66,12 +78,7 @@ class SetorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(Setor::find($id)->update($request->all())) {
-            Session::flash('status', 'info');
-            Session::flash('message', 'Setor atualizado.');
-        }
-
-        return redirect()->back();
+        //
     }
 
     /**
@@ -82,11 +89,6 @@ class SetorController extends Controller
      */
     public function destroy($id)
     {
-        if(Setor::destroy($id)) {
-            Session::flash('status', 'danger');
-            Session::flash('message', 'Setor excluido.');
-        }
-
-        return redirect()->back();
+        //
     }
 }

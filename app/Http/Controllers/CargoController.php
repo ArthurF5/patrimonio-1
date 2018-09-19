@@ -9,13 +9,23 @@ use Illuminate\Support\Facades\Session;
 class CargoController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $cargos = Cargo::all();
+        $cargos = Cargo::orderBy('nome', 'asc')->get();
         return view('sistema.cargos.index', compact('cargos'));
     }
 
@@ -38,30 +48,8 @@ class CargoController extends Controller
             Session::flash('status', 'success');
             Session::flash('message', 'Cargo cadastrado com sucesso');
 
-            return redirect()->route('cargos.index');
+            return redirect()->back();
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -73,7 +61,12 @@ class CargoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(Cargo::find($id)->update($request->all())) {
+            Session::flash('status', 'info');
+            Session::flash('message', 'Cargo atualizado.');
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -84,6 +77,16 @@ class CargoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Cargo::find($id)->responsaveis->isNotEmpty()) {
+            Session::flash('status', 'danger');
+            Session::flash('message', 'ERRO: Não foi possível excluir. Servidores cadastrados nesse cargo.');
+
+            return redirect()->back();
+        }
+
+        Cargo::destroy($id);
+        return redirect()->back();
+
+        
     }
 }

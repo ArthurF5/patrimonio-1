@@ -15,16 +15,10 @@
     	<li class="active">
     		<i class="fa fa-users"></i> Servidores
     	</li>
-
     </ol>
-
 @stop
 
 @section('content')
-
-    @component('components.error')
-    	@slot('errors', $errors->all())
-    @endcomponent
 
 	@if(session('message'))
 		<div class="alert alert-{{ session('status') }}" data-dismiss="alert">
@@ -52,28 +46,39 @@
 						<div class="form-group {{ ($errors->has('nome')) ? 'has-error' : '' }} ">
 							<label for="responsavel-nome">Nome: </label>
 							<input type="text" name="nome" id="responsavel-nome" class="form-control" autofocus value="{{ old('nome') }}">
+							@if($errors->has('nome'))
+								<span class="help-block">{{ $errors->first('nome') }}</span>
+							@endif
 						</div>
 
 						<div class="form-group {{ ($errors->has('cargo_id')) ? 'has-error' : '' }}">
 							<label for="resposavel-cargo">Cargo: </label>
-							<select name="cargo_id" id="resposavel-cargo" class="form-control">
+							<select name="cargo_id" id="resposavel-cargo" class="form-control select2">
 								<option selected disabled>Selecione o cargo </option>
 								@foreach($cargos as $cargo)
 									<option value="{{ $cargo->id }}" {{ old('cargo_id') == $cargo->id ? 'selected' : '' }}>{{ $cargo->nome }}</option>
 								@endforeach
 							</select>
+							@if($errors->has('cargo_id'))
+								<span class="help-block">{{ $errors->first('cargo_id') }}</span>
+							@endif
 						</div>
 
 						<div class="form-group {{ ($errors->has('siape')) ? 'has-error' : '' }}">
 							<label for="responsavel-siape">Siape: </label>
 							<input type="text" name="siape" id="responsavel-siape" class="form-control" value="{{ old('siape') }}">
+							@if($errors->has('siape'))
+								<span class="help-block">{{ $errors->first('siape') }}</span>
+							@endif
 							<span class="help-block">
 								<span class="label label-default">* Opcional</span>
 							</span>
 						</div>
 
 						<div class="form-group text-right">
-							<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+							<button type="submit" class="btn btn-primary">
+								<i class="fa fa-save"></i> Cadastrar
+							</button>
 						</div>
 						
 					</form>
@@ -92,7 +97,7 @@
 				</box>
 				<div class="box-body">
 					<div class="table-responsive">
-						<table class="table table-hover">
+						<table class="table table-hover table-condensed">
 							<thead>
 								<tr>
 									<th>Nome</th>
@@ -107,7 +112,26 @@
 									<td>{{ $usuario->nome }}</td>
 									<td>{{ $usuario->cargo->nome }}</td>
 									<td>{{ ($usuario->siape) ? $usuario->siape : 'NÃO CADASTRADO' }}</td>
-									<td></td>
+									<td>
+										<button class="btn btn-sm btn-default btn-detail" title="Editar" data-toggle="modal" data-target="#edit-modal-{{ $usuario->id }}">
+											<!-- Button trigger modal -->
+											<i class="fa fa-edit"></i>
+										</button>
+										@component('components.edit-responsaveis')
+											@slot('item', $usuario)
+											@slot('cargos', $cargos)
+										@endcomponent
+										
+										<button class="btn btn-sm btn-detail btn-danger" title="Excluir" data-toggle='modal' data-target='#delete-modal-{{ $usuario->id }}'>
+											<i class="fa fa-trash"></i>
+										</button>
+										@component('components.delete')
+											@slot('item', $usuario)
+											@slot('route', route('responsaveis.destroy', $usuario->id))
+										@endcomponent
+										
+
+									</td>
 								</tr>
 								@endforeach
 							</tbody>
@@ -117,41 +141,7 @@
 			</div>
 			
 		</div>
-
-
 	</div>
-
-	{{-- <div class="row">
-		<div class="col-lg-12">
-			<div class="table-responsive">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>Nome</th>
-							<th>Cargo</th>
-							<th>Siape</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						@foreach($users as $user)
-						<tr>
-							<td>{{ $user->name }}</td>
-							<td>{{ $user->role->name }}</td>
-							<td><span class="label label-default">{{ ($user->siape) ? $user->siape : 'Não cadastrado' }}</span></td>
-							<td>
-								<button class="btn btn-sm btn-default">
-									<i class="fa fa-search"></i>
-								</button>
-							</td>
-						</tr>
-						@endforeach
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div> --}}
-
-
-
 @stop
+
+

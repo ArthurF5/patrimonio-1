@@ -9,6 +9,18 @@ use Illuminate\Support\Facades\Session;
 
 class ResponsavelController extends Controller
 {
+
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +28,8 @@ class ResponsavelController extends Controller
      */
     public function index()
     {
-        $usuarios = Responsavel::all();
-        $cargos = Cargo::all();
+        $usuarios = Responsavel::orderBy('nome', 'asc')->get();
+        $cargos = Cargo::orderBy('nome', 'asc')->get();
         return view('sistema.responsaveis.index', compact('cargos', 'usuarios'));
     }
 
@@ -39,33 +51,11 @@ class ResponsavelController extends Controller
         $usuario = Responsavel::create($request->all());
 
         if ($usuario) {
-            Session::flash('status', 'success');
-            Session::flash('message', 'Usuário '. $request->name .' criado com sucesso');
-
-            return redirect()->route('responsaveis.index');            
+            Session::flash('status', 'info');
+            Session::flash('message', 'Usuário criado.');
         }
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return redirect()->back();
     }
 
     /**
@@ -77,7 +67,12 @@ class ResponsavelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(Responsavel::find($id)->update($request->all())) {
+            Session::flash('status', 'info');
+            Session::flash('message', 'Usuário atualizado.');
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -88,6 +83,11 @@ class ResponsavelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Responsavel::destroy($id)) {
+            Session::flash('status', 'danger');
+            Session::flash('message', 'Usuário excluido.');
+        }
+
+        return redirect()->back();
     }
 }

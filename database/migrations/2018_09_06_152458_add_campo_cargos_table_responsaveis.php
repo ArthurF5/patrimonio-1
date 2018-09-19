@@ -16,7 +16,6 @@ class AddCampoCargosTableResponsaveis extends Migration
         Schema::table('responsaveis', function (Blueprint $table) {
             $table->integer('cargo_id')->unsigned();
             $table->foreign('cargo_id')->references('id')->on('cargos')->onUpdate('cascade');
-
         });
     }
 
@@ -28,6 +27,7 @@ class AddCampoCargosTableResponsaveis extends Migration
     public function down()
     {
         Schema::table('responsaveis', function (Blueprint $table) {
+            $table->dropForeign('cargo_id');
             $table->dropColumn('cargo_id');
         });
     }
