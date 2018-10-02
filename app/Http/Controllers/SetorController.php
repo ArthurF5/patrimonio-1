@@ -25,7 +25,7 @@ class SetorController extends Controller
      */
     public function index()
     {
-        $setores = Setor::all();
+        $setores = Setor::orderBy('nome', 'asc')->get();
 
         return view('sistema.setores.index', compact('setores'));
     }

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setor;
+use App\Models\Material;
+use App\Models\Responsavel;
+
 use Illuminate\Http\Request;
 
 class MaterialController extends Controller
@@ -23,17 +27,10 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        return view('sistema.materiais.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $setores = Setor::orderBy('nome', 'asc')->get();
+        $responsaveis = Responsavel::orderBy('nome', 'asc')->get();
+        $materiais = Material::orderBy('nome', 'asc')->get();
+        return view('sistema.materiais.index', compact('setores', 'responsaveis', 'materiais'));
     }
 
     /**
@@ -44,7 +41,15 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'nome' => 'required|max:255',
+            'tombamento' => 'required|numeric',
+            'responsavel_id' => 'required|numeric',
+            'setor_id' => 'required|numeric',
+        ]);
+
+        Material::create($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -54,17 +59,6 @@ class MaterialController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }
@@ -89,6 +83,7 @@ class MaterialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Material::destroy($id);
+        return redirect()->back();
     }
 }

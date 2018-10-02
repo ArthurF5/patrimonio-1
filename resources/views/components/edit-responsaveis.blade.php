@@ -29,8 +29,7 @@
                         <label for="editar-setor" class="form-control-label">Setor: </label>
                         <select class="form-control" id="editar-setor" name="setor_id">
                             @foreach($setores as $setor)
-                            <option value="{{ $setor->id }} {{ $item->id == $setor->id ?'selected' : '' }}">{{ $setor->nome }}</option>
-
+                                <option value="{{ $setor->id }}" {{ $item->setor->id == $setor->id ? 'selected' : ''}}>{{ $setor->nome }}</option>
                             @endforeach
                             
                         </select>

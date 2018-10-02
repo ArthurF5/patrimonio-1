@@ -13,11 +13,17 @@ class CreateMateriaisTable extends Migration
      */
     public function up()
     {
-        Schema::table('materiais', function (Blueprint $table) {
+        Schema::create('materiais', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
             $table->string('tombamento');
             $table->string('descricao')->nullable();
+
+            $table->integer('setor_id')->unsigned();
+            $table->foreign('setor_id')->references('id')->on('setores')->onUpdate('cascade');
+
+            $table->integer('responsavel_id')->unsigned();
+            $table->foreign('responsavel_id')->references('id')->on('responsaveis')->onUpdate('cascade');
             $table->timestamps();
         });
     }
