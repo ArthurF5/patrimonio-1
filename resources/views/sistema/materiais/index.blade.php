@@ -60,7 +60,7 @@
                             <div class="col-lg-2 col-md-3 form-group {{ ($errors->has('setor_id')) ? 'has-error' : '' }}">
                                 <label for="material-setor">Setor: </label>
                                 <select name="setor_id" id="material-setor" class="form-control">
-                                    <option selected disabled>Selecione o setor</option>
+                                    <option selected disabled>Selecione</option>
                                     @foreach($setores as $setor)
                                         <option value="{{ $setor->id }}" {{ old('setor_id') == $setor->id ? 'selected' : '' }}>{{ $setor->nome }}</option>
                                     @endforeach
@@ -73,7 +73,7 @@
                             <div class="col-lg-2 col-md-3 form-group {{ ($errors->has('responsavel_id')) ? 'has-error' : '' }}">
                                 <label for="material-responsavel">Responsavel: </label>
                                 <select name="responsavel_id" id="material-responsavel" class="form-control select2">
-                                    <option selected disabled>Selecione o responsável</option>
+                                    <option selected disabled>Selecione</option>
                                     @foreach($responsaveis as $responsavel)
                                         <option value="{{ $responsavel->id }}" {{ old('responsavel_id') == $responsavel->id ? 'selected' : '' }}>{{ $responsavel->nome }}</option>
                                     @endforeach

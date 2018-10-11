@@ -45,6 +45,7 @@ class MaterialController extends Controller
         $validate = $request->validate([
             'nome' => 'required|max:255',
             'tombamento' => 'required|numeric|unique:materiais',
+            'valor' => 'required|numeric',
             'responsavel_id' => 'required|numeric',
             'setor_id' => 'required|numeric',
         ]);
