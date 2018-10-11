@@ -32,7 +32,7 @@
 	<div class="row">
 
 		<div class="col-lg-4 col-md-5">
-			<div class="box  box-default">
+			<div class="box  {{ ($errors->isNotEmpty()) ? 'box-danger' : '' }}">
 				<div class="box-header">
 					<h1 class="box-title">
 						<i class="fa fa-plus"></i> Cadastrar Cargo

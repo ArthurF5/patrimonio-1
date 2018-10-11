@@ -30,9 +30,15 @@ class Responsavel extends Model
 
     public function materiais()
     {
-        $this->hasMany('App\Models\Material', 'material_id');
+        return $this->hasMany('App\Models\Material');
     }
 
+    /**
+     * Setando o atributo nome para uppercase
+     * @param string $value
+     * @return null
+     */
+    
     public function setNomeAttribute($value) 
     {
         $this->attributes['nome'] = mb_strtoupper($value);

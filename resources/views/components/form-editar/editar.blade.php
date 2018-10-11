@@ -16,12 +16,12 @@
 
                     <div class="form-group">
                         <label for="nome" class="form-control-label">Nome: </label>
-                        <input type="text" name="nome" value="{{ old('nome', $item->nome) }}" class="form-control">
+                        <input type="text" name="nome" value="{{ $item->nome }}" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="descricao" class="form-control-label">Descrição: </label>
-                        <input type="text" name="descricao" value="{{ old('descricao', $item->descricao) }}" class="form-control">
+                        <input type="text" name="descricao" value="{{ $item->descricao }}" class="form-control">
                     </div>
 
 
