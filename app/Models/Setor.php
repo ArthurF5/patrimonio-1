@@ -13,6 +13,15 @@ class Setor extends Model
     	'descricao',
     ];
 
+    /**
+     * Optém todos os materiais ligados ao setor
+     * @return App\Models\Material
+     */
+    public function materiais()
+    {
+        return $this->hasMany('App\Models\Material');
+    }
+
 
     /**
      * Obtém todos os servidores ligados aquele setor

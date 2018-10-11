@@ -8,6 +8,7 @@ $(document).ready(function() {
     $('#error').modal('show');
 
     $('.data-table').DataTable({
+        paging: false,
     	language: {
     		'url': 'http://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json'
     	}

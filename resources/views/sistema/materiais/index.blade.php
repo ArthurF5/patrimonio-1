@@ -85,10 +85,14 @@
 
                             <div class="col-lg-3 col-md-3 form-group">
                                 <label for="material-valor">Valor: </label>
-                                <input type="number" name="valor" id="material-valor" class="form-control" step="0.01">
+                                <div class="input-group">
+                                    <span class="input-group-addon">R$</span>
+                                    <input type="number" name="valor" id="material-valor" class="form-control" step="0.01">
+                                </div>
                             </div>
 
-                            <div class="col-lg-12 col-md-3 form-group">
+
+                            <div class="col-lg-12 col-md-9 form-group">
                                 <label for="material-descricao">Descrição: </label>
                                 <input type="text"  name="descricao" id="material-descricao" class="form-control">
                                 <span class="help-block">

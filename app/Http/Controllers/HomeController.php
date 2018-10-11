@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setor;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('sistema.home');
+        $setores = Setor::orderBy('nome', 'asc')->get();
+        return view('sistema.home', compact('setores'));
     }
 }
