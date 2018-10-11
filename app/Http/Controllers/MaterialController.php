@@ -30,6 +30,7 @@ class MaterialController extends Controller
         $setores = Setor::orderBy('nome', 'asc')->get();
         $responsaveis = Responsavel::orderBy('nome', 'asc')->get();
         $materiais = Material::orderBy('nome', 'asc')->get();
+        
         return view('sistema.materiais.index', compact('setores', 'responsaveis', 'materiais'));
     }
 
@@ -49,7 +50,7 @@ class MaterialController extends Controller
         ]);
 
         Material::create($request->all());
-        return redirect()->back();
+        return back();
     }
 
     /**
@@ -72,7 +73,8 @@ class MaterialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Material::find($id)->update($request->all());
+        return back();
     }
 
     /**
@@ -84,6 +86,6 @@ class MaterialController extends Controller
     public function destroy($id)
     {
         Material::destroy($id);
-        return redirect()->back();
+        return back();
     }
 }

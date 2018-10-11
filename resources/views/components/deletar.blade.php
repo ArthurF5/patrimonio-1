@@ -9,7 +9,7 @@
             </div>
 
             <div class="modal-body text-center">
-            	<h3>Deseja realmente excluir <small>{{ $item->nome }}</small>?</h3>
+            	<h3>Deseja realmente excluir <br><small>{{ $item->nome }}</small>?</h3>
             	
                 <form action="{{ $route }}" method="POST" id="delete-form-{{ $item->id }}">
                     {{ csrf_field() }}

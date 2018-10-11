@@ -146,7 +146,7 @@
 											<!-- Button trigger modal -->
 											<i class="fa fa-edit"></i>
 										</button>
-										@component('components.edit-responsaveis')
+										@component('components.form-editar.editar-responsaveis')
 											@slot('item', $usuario)
 											@slot('cargos', $cargos)
 											@slot('setores', $setores)
@@ -155,7 +155,7 @@
 										<button class="btn btn-sm btn-detail btn-danger" title="Excluir" data-toggle='modal' data-target='#delete-modal-{{ $usuario->id }}'>
 											<i class="fa fa-trash"></i>
 										</button>
-										@component('components.delete')
+										@component('components.deletar')
 											@slot('item', $usuario)
 											@slot('route', route('responsaveis.destroy', $usuario->id))
 										@endcomponent

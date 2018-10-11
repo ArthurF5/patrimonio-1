@@ -32,7 +32,7 @@
 	<div class="row">
 		
 		<div class="col-lg-4 col-md-5">
-			<div class="box box-solid box-success">
+			<div class="box box-default">
 				<div class="box-header">
 					<h1 class="box-title">
 						<i class="fa fa-plus"></i> Cadastrar Setor
@@ -69,7 +69,7 @@
 			</div>
 		</div>
 		<div class="col-lg-8 col-md-7">
-			<div class="box box-success box-solid">
+			<div class="box box-default">
 				<div class="box-header ">
 					<h1 class="box-title">
 						<i class="fa fa-list"></i> Lista de Setores	 
@@ -95,7 +95,7 @@
 										<button type="button" class="btn btn-sm btn-default" data-toggle="modal"  title="Editar" data-target="#edit-modal-{{ $setor->id }}">
 											<i class="fa fa-edit"></i>
 										</button>
-										@component('components.edit')
+										@component('components.form-editar.editar')
 											@slot('item', $setor)
 											@slot('route', route('setores.update', $setor->id))
 										@endcomponent
@@ -103,7 +103,7 @@
 										<button class="btn btn-sm btn-detail btn-danger" title="Excluir" data-toggle='modal' data-target='#delete-modal-{{ $setor->id }}'>
 											<i class="fa fa-trash"></i>
 										</button>
-										@component('components.delete')
+										@component('components.deletar')
 											@slot('item', $setor)
 											@slot('route', route('setores.destroy', $setor->id))
 										@endcomponent

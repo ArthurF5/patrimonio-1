@@ -1,3 +1,4 @@
+
 <div class="modal fade" tabindex="-1" role="dialog" id="edit-modal-{{ $item->id }}">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">

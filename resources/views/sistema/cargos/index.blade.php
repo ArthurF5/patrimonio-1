@@ -32,7 +32,7 @@
 	<div class="row">
 
 		<div class="col-lg-4 col-md-5">
-			<div class="box box-solid box-success">
+			<div class="box  box-default">
 				<div class="box-header">
 					<h1 class="box-title">
 						<i class="fa fa-plus"></i> Cadastrar Cargo
@@ -70,7 +70,7 @@
 		</div>
 
 		<div class="col-lg-8 col-md-7">
-				<div class="box box-success box-solid">
+				<div class="box box-default ">
 					<div class="box-header ">
 						<h1 class="box-title">
 							<i class="fa fa-list"></i> Lista de Cargos
@@ -96,7 +96,7 @@
 											<button type="button" class="btn btn-sm btn-default" data-toggle="modal"  title="Editar" data-target="#edit-modal-{{ $cargo->id }}">
 											<i class="fa fa-edit"></i>
 										</button>
-										@component('components.edit')
+										@component('components.form-editar.editar')
 											@slot('item', $cargo)
 											@slot('route', route('cargos.update', $cargo->id))
 										@endcomponent
@@ -104,7 +104,7 @@
 										<button class="btn btn-sm btn-detail btn-danger" title="Excluir" data-toggle='modal' data-target='#delete-modal-{{ $cargo->id }}'>
 											<i class="fa fa-trash"></i>
 										</button>
-										@component('components.delete')
+										@component('components.deletar')
 											@slot('item', $cargo)
 											@slot('route', route('cargos.destroy', $cargo->id))
 										@endcomponent

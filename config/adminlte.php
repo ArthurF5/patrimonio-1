@@ -211,7 +211,7 @@ return [
         ],
         [
             'text'  => 'Materiais',
-            'icon'  => 'cube',
+            'icon'  => 'barcode',
             'route' => 'materiais.index',
 
         ],
