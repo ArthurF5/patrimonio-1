@@ -41,7 +41,7 @@
 
                         <div class="row">
 
-                            <div class="col-lg-2 col-md-3 form-group {{ ($errors->has('nome')) ? 'has-error' : '' }} ">
+                            <div class="col-lg-3 col-md-3 form-group {{ ($errors->has('nome')) ? 'has-error' : '' }} ">
                                 <label for="material-nome">Nome: </label>
                                 <input type="text" name="nome" id="material-nome" class="form-control" value="{{ old('nome') }}">
                                 @if($errors->has('nome'))
@@ -83,7 +83,12 @@
                                 @endif
                             </div>
 
-                            <div class="col-lg-4 col-md-3 form-group">
+                            <div class="col-lg-3 col-md-3 form-group">
+                                <label for="material-valor">Valor: </label>
+                                <input type="number" name="valor" id="material-valor" class="form-control" step="0.01">
+                            </div>
+
+                            <div class="col-lg-12 col-md-3 form-group">
                                 <label for="material-descricao">Descrição: </label>
                                 <input type="text"  name="descricao" id="material-descricao" class="form-control">
                                 <span class="help-block">
@@ -129,6 +134,7 @@
                                     </th>
                                     <th>Nome</th>
                                     <th>Tombamento</th>
+                                    <th>Valor</th>
                                     <th>Setor</th>
                                     <th>Responsável</th>
                                     <th></th>
@@ -142,6 +148,7 @@
                                     </td>
                                     <td>{{ $material->nome }}</td>
                                     <td>{{ $material->tombamento }}</td>
+                                    <td>R$ {{ $material->valor }}</td>
                                     <td>{{ $material->setor->nome }}</td>
                                     <td>{{ $material->responsavel->nome }}</td>
                                     <td>

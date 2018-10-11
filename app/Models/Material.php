@@ -12,6 +12,7 @@ class Material extends Model
         'nome',
         'tombamento',
         'descricao',
+        'valor',
         'responsavel_id',
         'setor_id',
     ];

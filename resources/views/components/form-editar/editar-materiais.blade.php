@@ -22,6 +22,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="editar-valor">Valor: </label>
+                        <input type="number" id="editar-valor" name="valor" value="{{ $item->valor }}" class="form-control" step="0.01">
+                    </div>
+
+                    <div class="form-group">
                         <label for="editar-setor" class="form-control-label">Setor: </label>
                         <select name="setor_id" id="editar-setor" class="form-control">
                             @foreach($setores as $setor)
