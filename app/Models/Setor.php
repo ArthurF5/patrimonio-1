@@ -13,6 +13,11 @@ class Setor extends Model
     	'descricao',
     ];
 
+    public function responsaveis()
+    {
+    	return $this->hasMany('App\Models\Responsavel');
+    }
+
     public function setNomeAttribute($value) 
     {
     	$this->attributes['nome'] = mb_strtoupper($value);

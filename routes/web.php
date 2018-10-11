@@ -12,15 +12,26 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
 
 Route::middleware(['auth'])->group(function() {
+
+	/**
+	 * Rotas básicas do sistema
+	 */
+	
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::resource('setores', 'SetorController', ['only' => ['index', 'store', 'update', 'destroy']]);
 	Route::resource('/responsaveis', 'ResponsavelController', ['only' => ['index', 'store', 'update', 'destroy']]);
 	Route::resource('/cargos', 'CargoController', ['only' => ['index', 'store', 'update', 'destroy']]);
 	Route::resource('/materiais', 'MaterialController', ['only' => ['index', 'store', 'update', 'destroy']]);
+
+	/**
+	 * Rotas para Ajax
+	 */
+	
 });

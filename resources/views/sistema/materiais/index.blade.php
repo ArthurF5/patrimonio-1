@@ -41,7 +41,7 @@
 
                         <div class="row">
 
-                            <div class="col-lg-3 col-md-3 form-group {{ ($errors->has('nome')) ? 'has-error' : '' }} ">
+                            <div class="col-lg-2 col-md-3 form-group {{ ($errors->has('nome')) ? 'has-error' : '' }} ">
                                 <label for="material-nome">Nome: </label>
                                 <input type="text" name="nome" id="material-nome" class="form-control" value="{{ old('nome') }}">
                                 @if($errors->has('nome'))
@@ -72,7 +72,7 @@
 
                             <div class="col-lg-2 col-md-3 form-group {{ ($errors->has('responsavel_id')) ? 'has-error' : '' }}">
                                 <label for="material-responsavel">Responsavel: </label>
-                                <select name="responsavel_id" id="material-responsavel" class="form-control">
+                                <select name="responsavel_id" id="material-responsavel" class="form-control select2">
                                     <option selected disabled>Selecione o responsável</option>
                                     @foreach($responsaveis as $responsavel)
                                         <option value="{{ $responsavel->id }}" {{ old('responsavel_id') == $responsavel->id ? 'selected' : '' }}>{{ $responsavel->nome }}</option>
@@ -83,7 +83,7 @@
                                 @endif
                             </div>
 
-                            <div class="col-lg-3 col-md-3 form-group">
+                            <div class="col-lg-4 col-md-3 form-group">
                                 <label for="material-descricao">Descrição: </label>
                                 <input type="text"  name="descricao" id="material-descricao" class="form-control">
                                 <span class="help-block">
@@ -121,9 +121,12 @@
                 </box>
                 <div class="box-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-condensed">
+                        <table class="table table-hover table-condensed data-table">
                             <thead>
                                 <tr>
+                                    <th>
+                                        
+                                    </th>
                                     <th>Nome</th>
                                     <th>Tombamento</th>
                                     <th>Setor</th>
@@ -133,7 +136,10 @@
                             </thead>
                             <tbody>
                                 @foreach($materiais as $material)
-                                <tr>
+                                <tr {{-- data-toggle="tooltip" data-placement="left" title="TESTE" --}}>
+                                    <td>
+                                        
+                                    </td>
                                     <td>{{ $material->nome }}</td>
                                     <td>{{ $material->tombamento }}</td>
                                     <td>{{ $material->setor->nome }}</td>
@@ -151,8 +157,6 @@
                                             @slot('item', $material)
                                             @slot('route', route('materiais.destroy', $material->id))
                                         @endcomponent
-                                        
-
                                     </td>
                                 </tr>
                                 @endforeach
@@ -166,3 +170,5 @@
     </div>
 
 @stop
+
+    

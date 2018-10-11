@@ -16,15 +16,19 @@ class Material extends Model
         'setor_id',
     ];
 
-    public function setor()
-    {
-        return $this->belongsTo('App\Models\Setor', 'setor_id');
-    }
-
     public function responsavel()
     {
         return $this->belongsTo('App\Models\Responsavel', 'responsavel_id');
     }
 
+    public function setor()
+    {
+        return $this->belongsTo('App\Models\Setor', 'setor_id');
+    }
+
+    public function setNomeAttribute($value) 
+    {
+        $this->attributes['nome'] = mb_strtoupper($value);
+    }
 
 }

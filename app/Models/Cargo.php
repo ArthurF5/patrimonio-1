@@ -22,8 +22,4 @@ class Cargo extends Model
     {
         $this->attributes['nome'] = mb_strtoupper($value);
     }
-
-    public static function getOrderedCargos() {
-    	return self::orderBy('nome', 'asc')->get();
-    }
 }

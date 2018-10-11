@@ -15,6 +15,9 @@ class Responsavel extends Model
         'setor_id',
     ];
 
+    //
+
+
     public function cargo()
     {
         return $this->belongsTo('App\Models\Cargo', 'cargo_id');
@@ -23,6 +26,11 @@ class Responsavel extends Model
     public function setor()
     {
         return $this->belongsTo('App\Models\Setor', 'setor_id');
+    }
+
+    public function materiais()
+    {
+        $this->hasMany('App\Models\Material', 'material_id');
     }
 
     public function setNomeAttribute($value) 
