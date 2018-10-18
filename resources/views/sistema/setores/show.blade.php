@@ -71,7 +71,7 @@
                         <h4>
                             <div class="pull-left">
                                 <strong>Total:</strong>
-                                R$ {{ $setor->materiais->sum('valor') }}
+                                R$ {{ number_format($setor->materiais->sum('valor'), 2, ',','.') }}
                             </div>
                         </h4>
                     </div>

@@ -67,7 +67,7 @@
                         <h4>
                             <div class="pull-left">
                                 <strong>Total:</strong> 
-                                R$ {{ $responsavel->materiais->sum('valor') }}
+                                R$ {{ number_format($responsavel->materiais->sum('valor'), 2, ',','.') }}
                             </div>
                         </h4>
                         
