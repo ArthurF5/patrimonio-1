@@ -89,4 +89,30 @@ class MaterialController extends Controller
         Material::destroy($id);
         return back();
     }
+
+    public function AjaxServidoresPorSetor(Request $request)
+    {
+        $response = [
+            'status' => 403,
+            'msg' => 'Forbbiden',
+        ];
+
+        if ($request->ajax()) {
+
+            $response = [
+                'status' => 200,
+                'msg' => 'Success',
+            ];
+
+            $servidores = Setor::find($request->setor)->servidores;
+
+            
+            if ($servidores->isNotEmpty()) {
+                return response()->json($servidores);
+            }
+
+        }
+
+        return response()->json($response);
+    }
 }

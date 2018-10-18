@@ -142,6 +142,10 @@
 									<td>{{ $usuario->setor->nome }}</td>
 									<td>{{ ($usuario->siape) ? $usuario->siape : 'NÃO CADASTRADO' }}</td>
 									<td>
+										<a href="{{ route('responsaveis.show', $usuario->id) }}" class="btn btn-sm btn-default">
+											<i class="fa fa-cubes"></i> Materiais
+										</a>
+
 										<button class="btn btn-sm btn-default btn-detail" title="Editar" data-toggle="modal" data-target="#edit-modal-{{ $usuario->id }}">
 											<!-- Button trigger modal -->
 											<i class="fa fa-edit"></i>

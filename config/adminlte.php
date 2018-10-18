@@ -58,7 +58,7 @@ return [
     |
     */
 
-    'layout' => null,
+    'layout' => 'fixed',
 
     /*
     |--------------------------------------------------------------------------
@@ -211,7 +211,7 @@ return [
         ],
         [
             'text'  => 'Materiais',
-            'icon'  => 'barcode',
+            'icon'  => 'cubes',
             'route' => 'materiais.index',
 
         ],

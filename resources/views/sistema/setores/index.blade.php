@@ -82,7 +82,6 @@
 							<thead>
 								<tr>
 									<th>Nome</th>	
-									<th>Descrição</th>	
 									<th>Ações</th>		
 								</tr>
 							</thead>
@@ -90,7 +89,6 @@
 								@foreach($setores as $setor)
 								<tr>
 									<td>{{ $setor->nome }}</td>
-									<td>{{ ($setor->descricao) ? $setor->descricao : 'Sem descrição' }}</td>
 									<td>
 										<button type="button" class="btn btn-sm btn-default" data-toggle="modal"  title="Editar" data-target="#edit-modal-{{ $setor->id }}">
 											<i class="fa fa-edit"></i>

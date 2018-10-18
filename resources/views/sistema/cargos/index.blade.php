@@ -83,7 +83,6 @@
 								<thead>
 									<tr>
 										<th>Nome</th>	
-										<th>Descrição</th>	
 										<th>Ações</th>	
 									</tr>
 								</thead>
@@ -91,7 +90,6 @@
 									@foreach($cargos as $cargo)
 									<tr>
 										<td>{{ $cargo->nome }}</td>
-										<td>{{ ($cargo->descricao) ? $cargo->descricao : 'Sem descrição' }}</td>
 										<td>
 											<button type="button" class="btn btn-sm btn-default" data-toggle="modal"  title="Editar" data-target="#edit-modal-{{ $cargo->id }}">
 											<i class="fa fa-edit"></i>

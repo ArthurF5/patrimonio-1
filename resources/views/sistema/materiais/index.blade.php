@@ -13,7 +13,7 @@
     		<a href="{{ route('home') }}">Home</a>
     	</li>
     	<li class="active">
-    		<i class="fa fa-cube"></i> Materiais
+    		<i class="fa fa-cubes"></i> Materiais
     	</li>
     </ol>
 @stop
@@ -52,14 +52,14 @@
                             <div class="col-lg-2 col-md-3 form-group {{ ($errors->has('tombamento')) ? 'has-error' : '' }} ">
                                 <label for="material-tombamento">Tombamento: </label>
                                 <input type="text" name="tombamento" id="material-tombamento" class="form-control" value="{{ old('tombamento') }}">
-                                @if($errors->has('nome'))
+                                @if($errors->has('tombamento'))
                                     <span class="help-block">{{ $errors->first('tombamento') }}</span>
                                 @endif
                             </div>
 
                             <div class="col-lg-2 col-md-3 form-group {{ ($errors->has('setor_id')) ? 'has-error' : '' }}">
                                 <label for="material-setor">Setor: </label>
-                                <select name="setor_id" id="material-setor" class="form-control">
+                                <select name="setor_id" id="material-setor" class="form-control select2">
                                     <option selected disabled>Selecione</option>
                                     @foreach($setores as $setor)
                                         <option value="{{ $setor->id }}" {{ old('setor_id') == $setor->id ? 'selected' : '' }}>{{ $setor->nome }}</option>
@@ -83,12 +83,17 @@
                                 @endif
                             </div>
 
-                            <div class="col-lg-3 col-md-3 form-group">
+                            <div class="col-lg-3 col-md-3 form-group {{ ($errors->has('valor')) ? 'has-error' : '' }}">
                                 <label for="material-valor">Valor: </label>
                                 <div class="input-group">
                                     <span class="input-group-addon">R$</span>
                                     <input type="number" name="valor" id="material-valor" class="form-control" step="0.01">
                                 </div>
+                                <span class="help-block">
+                                	@if($errors->has('valor'))
+                                		<span class="help-block">{{ $errors->first('valor') }}</span>
+                            		@endif
+                                </span>
                             </div>
 
 
@@ -146,7 +151,7 @@
                             </thead>
                             <tbody>
                                 @foreach($materiais as $material)
-                                <tr {{-- data-toggle="tooltip" data-placement="left" title="TESTE" --}}>
+                                <tr>
                                     <td>
                                         
                                     </td>
@@ -187,4 +192,53 @@
 
 @stop
 
-    
+@section('js')
+    <script type="text/javascript">
+
+        function servidorPorSetor() {
+            /*$.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });*/
+
+            $.ajax({
+                type: "GET",
+                url: "{{ route('ajax.servidores.por.setor') }}",
+                data: {
+                    setor: $("#material-setor").val()
+                },
+                success: function(data) {
+
+                    var options = `<option selected disabled>Selecione</option>`;
+
+                    $.each(data, function(index, element) {
+
+                        var id = element['id'];
+                        var nome = element['nome'];
+
+                        if (id) {
+                                options += `<option value='${id}'>${nome}</option>`;
+                        } else {
+                            options = `<option selected disabled>Nenhum servidor cadastrado no setor</option>`;
+                        }
+
+                    });
+
+                    // document.getElementById('material-responsavel').innerHTML = options;
+                    // console.log(options);
+
+                },
+
+                error: function(error) {
+                    
+                },
+            });
+        }
+
+        $('#material-setor').change(function() {
+            servidorPorSetor()
+        });
+    </script>
+
+@stop

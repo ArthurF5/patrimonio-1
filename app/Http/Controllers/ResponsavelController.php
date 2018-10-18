@@ -37,6 +37,12 @@ class ResponsavelController extends Controller
         return view('sistema.responsaveis.index', compact('cargos', 'usuarios', 'setores'));
     }
 
+    public function show($id)
+    {
+        $usuario = Responsavel::find($id);
+        return $usuario->materiais;
+    }
+
   
     /**
      * Store a newly created resource in storage.
