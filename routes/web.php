@@ -25,10 +25,10 @@ Route::middleware(['auth'])->group(function() {
 	
 	Route::get('/home', 'HomeController@index')->name('home');
 
-	Route::resource('/setores', 'SetorController', ['only' => ['index', 'store', 'update', 'destroy']]);
-	Route::resource('/responsaveis', 'ResponsavelController', ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
-	Route::resource('/cargos', 'CargoController', ['only' => ['index', 'store', 'update', 'destroy']]);
-	Route::resource('/materiais', 'MaterialController', ['only' => ['index', 'store', 'update', 'destroy']]);
+	Route::resource('/setores', 'SetorController', ['only' => ['index', 'show' ,'store', 'update', 'destroy']]);
+	Route::resource('/responsaveis', 'ResponsavelController', ['only' => ['index', 'show' ,'store', 'update', 'destroy']]);
+	Route::resource('/cargos', 'CargoController', ['only' => ['index', 'show' ,'store', 'update', 'destroy']]);
+	Route::resource('/materiais', 'MaterialController', ['only' => ['index', 'show' ,'store', 'update', 'destroy']]);
 
 	/**
 	 * Rotas para Ajax

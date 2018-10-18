@@ -39,8 +39,8 @@ class ResponsavelController extends Controller
 
     public function show($id)
     {
-        $usuario = Responsavel::find($id);
-        return $usuario->materiais;
+        $responsavel = Responsavel::find($id);
+        return view('sistema.responsaveis.show', compact('responsavel'));
     }
 
   

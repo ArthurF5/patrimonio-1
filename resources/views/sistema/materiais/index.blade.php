@@ -87,7 +87,7 @@
                                 <label for="material-valor">Valor: </label>
                                 <div class="input-group">
                                     <span class="input-group-addon">R$</span>
-                                    <input type="number" name="valor" id="material-valor" class="form-control" step="0.01">
+                                    <input type="number" name="valor" id="material-valor" class="form-control" step="0.01" value="{{ old('valor') }}">
                                 </div>
                                 <span class="help-block">
                                 	@if($errors->has('valor'))

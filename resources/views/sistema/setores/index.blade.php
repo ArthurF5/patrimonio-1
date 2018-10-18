@@ -90,6 +90,11 @@
 								<tr>
 									<td>{{ $setor->nome }}</td>
 									<td>
+										<a href="{{ route('setores.show', $setor->id) }}" class="btn btn-sm btn-default">
+											<i class="fa fa-cubes"></i> Materiais
+										</a>
+									
+
 										<button type="button" class="btn btn-sm btn-default" data-toggle="modal"  title="Editar" data-target="#edit-modal-{{ $setor->id }}">
 											<i class="fa fa-edit"></i>
 										</button>

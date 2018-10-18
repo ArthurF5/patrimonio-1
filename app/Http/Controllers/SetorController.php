@@ -30,6 +30,13 @@ class SetorController extends Controller
         return view('sistema.setores.index', compact('setores'));
     }
 
+    public function show($id)
+    {
+        $setor = Setor::find($id);
+        
+        return view('sistema.setores.show', compact('setor'));
+    }
+
 
     /**
      * Store a newly created resource in storage.
