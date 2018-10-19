@@ -40,7 +40,9 @@ class ResponsavelController extends Controller
     public function show($id)
     {
         $responsavel = Responsavel::find($id);
-        return view('sistema.responsaveis.show', compact('responsavel'));
+        $setores = Setor::orderBy('nome', 'asc')->get();
+        
+        return view('sistema.responsaveis.show', compact('responsavel', 'setores'));
     }
 
   

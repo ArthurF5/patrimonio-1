@@ -2,11 +2,8 @@
 
 
 @section('content_header')
-    <h1>
-    	<strong>{{ $responsavel->nome }}</strong>
-    </h1>
-
-
+    <h1><strong>{{ $responsavel->nome }}</strong></h1>
+    <br>
     <ol class="breadcrumb">
     	<li>
     		<i class="fa fa-home"></i>
@@ -21,10 +18,19 @@
             <i class="fa fa-list"></i> Lista de materiais
         </li>
     </ol>
+    <br>
+    <button class="btn btn-default btn-detail" title="Adicionar" data-toggle='modal' data-target='#cadastrar-materiais-modal'>
+        <i class="fa fa-plus"></i> Adicionar item
+    </button>
+
+    @component('components.form-cadastrar.cadastrar-materiais')
+        @slot('responsavel', $responsavel)
+    @endcomponent
 @stop
 
 @section('content')
     <div class="row">
+
         <div class="col-lg-12">
 
             @if($responsavel->materiais->isNotEmpty())
@@ -47,6 +53,7 @@
                                         <th>Nome</th>
                                         <th>Tombamento</th>
                                         <th>Valor</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
 
@@ -56,6 +63,18 @@
                                             <td>{{ $material->nome }}</td>
                                             <td>{{ $material->tombamento }}</td>
                                             <td>R$ {{ $material->valor }}</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-detail" title="Modificar item">
+                                                    <i class="fa fa-exchange"></i>                                                    
+                                                </button>
+                                                <button class="btn btn-sm btn-detail btn-danger" title="Excluir" data-toggle='modal' data-target='#delete-modal-{{ $material->id }}'>
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                                @component('components.deletar')
+                                                    @slot('item', $material)
+                                                    @slot('route', route('materiais.destroy', $material->id))
+                                                @endcomponent
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -84,7 +103,7 @@
 
         <div class="col-lg-12">
             <a href={{ route('responsaveis.index') }}  class="btn btn-default pull-left">
-                Voltar
+                <i class="fa fa-arrow-left"></i> Voltar
             </a>
         </div>
     </div>
