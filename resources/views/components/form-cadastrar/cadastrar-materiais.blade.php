@@ -28,6 +28,10 @@
                     <div class="form-group {{ $errors->has('tombamento') ? 'has-error' : '' }}">
                         <label for="cadastrar-materiais-tombamento">Tombamento:</label>
                         <input type="text" name="tombamento" id="cadastrar-materiais-tombamento" class="form-control" value="{{ old('tombamento') }}">
+                        <span class="help-block">
+                            <span class="label label-default">* Opcional</span>
+
+                        </span>
                         @if($errors->has('tombamento'))
                             <span class="help-block">
                                 {{ $errors->first('tombamento') }}

@@ -128,6 +128,11 @@
 
         <footer class="main-footer">
             @yield('footer')
+            <div class="text-right">
+                <p class="text-muted">
+                    Desenvolvido por CGTI - IFBA Campus Juazeiro
+                </p>
+            </div>
         </footer>
     </div>
     <!-- ./wrapper -->

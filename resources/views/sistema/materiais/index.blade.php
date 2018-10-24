@@ -52,6 +52,10 @@
                             <div class="col-lg-2 col-md-3 form-group {{ ($errors->has('tombamento')) ? 'has-error' : '' }} ">
                                 <label for="material-tombamento">Tombamento: </label>
                                 <input type="text" name="tombamento" id="material-tombamento" class="form-control" value="{{ old('tombamento') }}">
+                                <span class="help-block">
+                                    <span class="label label-default">* Opcional</span>
+
+                                </span>
                                 @if($errors->has('tombamento'))
                                     <span class="help-block">{{ $errors->first('tombamento') }}</span>
                                 @endif
@@ -102,7 +106,6 @@
                                 <input type="text"  name="descricao" id="material-descricao" class="form-control">
                                 <span class="help-block">
                                     <span class="label label-default">* Opcional</span>
-
                                 </span>
                             </div>
                         </div>
@@ -123,15 +126,17 @@
 
         <div class="col-lg-12">
 
-            <div class="box box-success">
+            <div class="box box-success collapsed-box">
                 <box class="box-header ">
                     <h1 class="box-title">
                         <i class="fa fa-list"></i>
                     </h1>
 
                     <div class="box-tools pull-right">
-                        <span class="label label-default">{{ $materiais->count() }}</span>
+                        <span class="label label-default">{{ $materiais->count() }} {{ $materiais->count() > 1 ? 'Cadastrados' : 'Cadastrado' }} </span>
+                        <button type="button" class="btn btn-box-tool" data-widget='collapse'><i class="fa fa-plus"></i></button>
                     </div>
+                    
                 </box>
                 <div class="box-body">
                     <div class="table-responsive">

@@ -47,37 +47,44 @@
 
                     <div class="box-body">
                         <div class="table-responsive">
-                            <table class="table table-hover table-condensed">
+                            <table class="table table-hover table-condensed" id="tabela-materiais">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th>Nome</th>
                                         <th>Tombamento</th>
                                         <th>Valor</th>
                                         <th></th>
                                     </tr>
                                 </thead>
-
-                                <tbody>
-                                    @foreach($responsavel->materiais as $material)
-                                        <tr>
-                                            <td>{{ $material->nome }}</td>
-                                            <td>{{ $material->tombamento }}</td>
-                                            <td>R$ {{ $material->valor }}</td>
-                                            <td>
-                                                <button class="btn btn-sm btn-detail" title="Modificar item">
-                                                    <i class="fa fa-exchange"></i>                                                    
-                                                </button>
-                                                <button class="btn btn-sm btn-detail btn-danger" title="Excluir" data-toggle='modal' data-target='#delete-modal-{{ $material->id }}'>
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                                @component('components.deletar')
-                                                    @slot('item', $material)
-                                                    @slot('route', route('materiais.destroy', $material->id))
-                                                @endcomponent
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
+                                <form action="" method="POST" id="alterar-materiais">
+                                    @csrf
+                                    
+                                    <tbody>
+                                        @foreach($responsavel->materiais as $material)
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox" value="{{ $material->id }}" name="materiais[]" id="materiais">
+                                                </td>
+                                                <td>{{ $material->nome }}</td>
+                                                <td>{{ $material->tombamento }}</td>
+                                                <td>R$ {{ $material->valor }}</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-detail" title="Modificar item">
+                                                        <i class="fa fa-exchange"></i>                                                    
+                                                    </button>
+                                                    <button class="btn btn-sm btn-detail btn-danger" title="Excluir" data-toggle='modal' data-target='#delete-modal-{{ $material->id }}'>
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                    @component('components.deletar')
+                                                        @slot('item', $material)
+                                                        @slot('route', route('materiais.destroy', $material->id))
+                                                    @endcomponent
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </form>
                             </table>
                         </div>
                     </div>
@@ -107,5 +114,9 @@
             </a>
         </div>
     </div>
+
+@stop
+
+@section('js')
 
 @stop

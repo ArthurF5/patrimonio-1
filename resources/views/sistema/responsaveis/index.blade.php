@@ -38,7 +38,6 @@
 					</h1>
 					<div class="box-tools">
 						<button type="button" class="btn btn-box-tool" data-widget='collapse'><i class="fa fa-minus"></i></button>
-						
 					</div>
 				</div>
 				
@@ -119,8 +118,11 @@
 					</h1>
 
 					<div class="box-tools pull-right">
-						<span class="label label-default">{{ $usuarios->count() }}</span>
+						<span class="label label-default">{{ $usuarios->count() }} {{ $usuarios->count() > 1 ? 'Cadastrados' : 'Cadastrado' }} </span>
+						<button type="button" class="btn btn-box-tool" data-widget='collapse'><i class="fa fa-minus"></i></button>
 					</div>
+					
+					
 				</box>
 				<div class="box-body">
 					<div class="table-responsive">
