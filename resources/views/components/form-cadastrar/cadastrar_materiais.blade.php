@@ -68,35 +68,6 @@
 
                     <input type="hidden" value="{{ $responsavel->setor->id }}" name="setor_id">
                     <input type="hidden" value="{{ $responsavel->id }}" name="responsavel_id">
-
-                    {{-- <div class="form-group {{ $errors->has('setor_id') ? 'has-error' : '' }}">
-                        <label for="cadastrar-materiais-setor">Setor: </label>
-                        <select name="setor_id" id="cadastrar-materiais-setor" class="form-control" readonly>
-                            <option value="{{ $responsavel->setor->id }}" selected>{{ $responsavel->setor->nome }}</option>
-                        </select>
-                        @if($errors->has('setor_id'))
-                            <span class="help-block">
-                                {{ $errors->first('setor_id') }}
-                            </span>
-                        @endif
-                    </div>
-
-                    <div class="form-group {{ $errors->has('responsavel_id') ? 'has-error' : '' }}">
-                        <label for="cadastrar-materiais-responsavel">Responsável: </label>
-                        <select name="responsavel_id" id="cadastrar-materiais-responsavel" class="form-control" readonly>
-                            <option value="{{ $responsavel->id }}" selected>{{ $responsavel->nome }}</option>
-                        </select>
-                        @if($errors->has('responsavel_id'))
-                            <span class="help-block">
-                                {{ $errors->first('responsavel_id') }}
-                            </span>
-                        @endif
-                    </div> --}}
-
-
-
-
-
                 </form>
                 
                 
@@ -110,6 +81,3 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-@section('js')
-@stop

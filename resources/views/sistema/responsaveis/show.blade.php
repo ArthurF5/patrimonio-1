@@ -23,7 +23,7 @@
         <i class="fa fa-plus"></i> Adicionar item
     </button>
 
-    @component('components.form-cadastrar.cadastrar-materiais')
+    @component('components.form-cadastrar.cadastrar_materiais')
         @slot('responsavel', $responsavel)
     @endcomponent
 @stop
@@ -57,7 +57,8 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <form action="" method="POST" id="alterar-materiais">
+                                <form action="{{ route('materiais.exchange') }}" method="POST" id="alterar-materiais">
+
                                     @csrf
                                     
                                     <tbody>
@@ -70,20 +71,18 @@
                                                 <td>{{ $material->tombamento }}</td>
                                                 <td>R$ {{ $material->valor }}</td>
                                                 <td>
-                                                    <button class="btn btn-sm btn-detail" title="Modificar item">
-                                                        <i class="fa fa-exchange"></i>                                                    
-                                                    </button>
-                                                    <button class="btn btn-sm btn-detail btn-danger" title="Excluir" data-toggle='modal' data-target='#delete-modal-{{ $material->id }}'>
+                                                    {{-- <button class="btn btn-sm btn-detail btn-danger" title="Excluir" data-toggle='modal' data-target='#delete-modal-{{ $material->id }}'>
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                     @component('components.deletar')
                                                         @slot('item', $material)
                                                         @slot('route', route('materiais.destroy', $material->id))
-                                                    @endcomponent
+                                                    @endcomponent --}}
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
+
                                 </form>
                             </table>
                         </div>
@@ -109,6 +108,9 @@
         </div>
 
         <div class="col-lg-12">
+            <button type="submit" form="alterar-materiais" class="btn btn-default">
+                <i class="fa fa-exchange"></i> Transferir
+            </button>
             <a href={{ route('responsaveis.index') }}  class="btn btn-default pull-left">
                 <i class="fa fa-arrow-left"></i> Voltar
             </a>
@@ -119,4 +121,26 @@
 
 @section('js')
 
+    @if($errors->isNotEmpty())
+        <script>
+            $(document).ready(() => {
+                $('#cadastrar-materiais-modal').modal('show')
+
+                $('#cadastrar-materiais-modal').on('shown.bs.modal', function () {
+                    $('#cadastrar-materiais-nome').focus()
+                });
+            })
+
+        </script>
+    @endif
+
+    <script>
+        $("#tabela-materiais tr").click(function() {
+            var checkbox = $(this).find("input[type='checkbox']");
+            checkbox.attr('checked', !checkbox.attr('checked'));
+        });
+        $('#cadastrar-materiais-modal').on('shown.bs.modal', function () {
+            $('#cadastrar-materiais-nome').focus()
+        });
+    </script>
 @stop

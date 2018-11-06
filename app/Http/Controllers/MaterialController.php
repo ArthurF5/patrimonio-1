@@ -90,6 +90,11 @@ class MaterialController extends Controller
         return back();
     }
 
+    public function exchange(Request $request)
+    {
+        return Material::find($request->materiais);
+    }
+
     public function AjaxServidoresPorSetor(Request $request)
     {
         $response = [
