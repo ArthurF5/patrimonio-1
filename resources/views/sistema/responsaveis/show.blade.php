@@ -50,7 +50,9 @@
                             <table class="table table-hover table-condensed" id="tabela-materiais">
                                 <thead>
                                     <tr>
-                                        <th></th>
+                                        <th>
+                                            
+                                        </th>
                                         <th>Nome</th>
                                         <th>Tombamento</th>
                                         <th>Valor</th>
@@ -98,12 +100,13 @@
         </div>
 
         <div class="col-lg-12">
+            <a href="{{ route('responsaveis.index') }}"  class="btn btn-default">
+                <i class="fa fa-arrow-left"></i> Voltar
+            </a>
+            
             <button type="submit" form="alterar-materiais" class="btn btn-default">
                 <i class="fa fa-exchange"></i> Transferir
             </button>
-            <a href={{ route('responsaveis.index') }}  class="btn btn-default pull-left">
-                <i class="fa fa-arrow-left"></i> Voltar
-            </a>
         </div>
     </div>
 
@@ -125,6 +128,8 @@
     @endif
 
     <script>
+        
+
         $("#tabela-materiais tr").click(function() {
             var checkbox = $(this).find("input[type='checkbox']");
             checkbox.attr('checked', !checkbox.attr('checked'));
@@ -134,6 +139,7 @@
                 checkbox.closest('tr').removeClass('active')
             }
         });
+
 
         $('#cadastrar-materiais-modal').on('shown.bs.modal', function () {
             $('#cadastrar-materiais-nome').focus()

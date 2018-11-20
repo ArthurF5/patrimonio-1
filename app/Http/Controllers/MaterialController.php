@@ -93,9 +93,24 @@ class MaterialController extends Controller
     public function exchange(Request $request)
     {
         $materiais = Material::find($request->materiais);
-        $responsaveis = Responsavel::orderBy('nome')->get();
+        $dono = $materiais->first()->responsavel;
+        $responsaveis = Responsavel::where('id', '!=', $dono->id)->orderBy('nome')->get();
 
         return view('sistema.materiais.exchange', compact('materiais', 'responsaveis'));
+    }
+
+    public function change(Request $request)
+    {
+        $materiais = Material::find($request->materiais);
+        $responsavel = Responsavel::find($request->responsavel);
+
+        foreach ($materiais as $material) {
+            $material->update(['responsavel_id' => $responsavel->id, 'setor_id' => $responsavel->setor->id]);
+        }
+
+        return redirect()->route('responsaveis.index');
+        
+
     }
 
     public function AjaxServidoresPorSetor(Request $request)

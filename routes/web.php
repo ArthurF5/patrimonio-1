@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function() {
 	$this->resource('/cargos', 'CargoController', ['only' => ['index', 'show' ,'store', 'update', 'destroy']]);
 	$this->resource('/materiais', 'MaterialController', ['only' => ['index', 'show' ,'store', 'update', 'destroy']]);
 	$this->post('/materiais/exchange', 'MaterialController@exchange')->name('materiais.exchange');
+	$this->post('/materiais/change', 'MaterialController@change')->name('materiais.change');
 
 	/**
 	 * Rotas para Ajax
