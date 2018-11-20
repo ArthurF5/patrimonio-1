@@ -54,7 +54,6 @@
                                         <th>Nome</th>
                                         <th>Tombamento</th>
                                         <th>Valor</th>
-                                        <th></th>
                                     </tr>
                                 </thead>
                                 <form action="{{ route('materiais.exchange') }}" method="POST" id="alterar-materiais">
@@ -70,15 +69,6 @@
                                                 <td>{{ $material->nome }}</td>
                                                 <td>{{ $material->tombamento }}</td>
                                                 <td>R$ {{ $material->valor }}</td>
-                                                <td>
-                                                    {{-- <button class="btn btn-sm btn-detail btn-danger" title="Excluir" data-toggle='modal' data-target='#delete-modal-{{ $material->id }}'>
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                    @component('components.deletar')
-                                                        @slot('item', $material)
-                                                        @slot('route', route('materiais.destroy', $material->id))
-                                                    @endcomponent --}}
-                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -138,7 +128,13 @@
         $("#tabela-materiais tr").click(function() {
             var checkbox = $(this).find("input[type='checkbox']");
             checkbox.attr('checked', !checkbox.attr('checked'));
+            if (checkbox.attr('checked')) {
+                checkbox.closest('tr').addClass('active')
+            } else {
+                checkbox.closest('tr').removeClass('active')
+            }
         });
+
         $('#cadastrar-materiais-modal').on('shown.bs.modal', function () {
             $('#cadastrar-materiais-nome').focus()
         });
